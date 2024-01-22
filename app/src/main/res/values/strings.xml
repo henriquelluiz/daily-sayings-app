@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">Daily Sayings</string>
+    <string name="day_of_month">Day %d</string>
+    <string-array name="list_of_sayings_pt">
+        <item>O temor do SENHOR é o princípio do conhecimento, mas os insensatos desprezam.</item>
+        <item>Porquanto é o SENHOR quem concede sabedoria, e da sua boca procedem a inteligência e o discernimento.</item>
+        <item>Ele reserva a plena sabedoria para os justos; como um escudo protege quem procura viver com integridade, pois guarda os passos do justo e protege o caminho de seus santos.</item>
+        <item>Reconhece o SENHOR em todos os teus caminhos, e Ele endireitará as tuas veredas.</item>
+        <item>Sempre que possível, não deixes de cooperar com quem precisa de ajuda.</item>
+        <item>Entretanto, a vereda dos justos é como a luz da aurora, que vai brilhando cada vez mais até a plena iluminação do dia.</item>
+        <item>Acima de tudo o que se deve preservar, guarda o íntimo da razão, pois é da disposição do coração que depende toda a tua vida.</item>
+        <item>Os caminhos do homem estão diante dos olhos do SENHOR, e Ele examina atentamente todos os seus passos!</item>
+        <item>Quanto ao perverso, são suas próprias iniquidades que o amarram e o fazem prisioneiro das cordas do seu pecado.</item>
+        <item>Filho meu, obedece à orientação de teu pai e não abandones o ensino de tua mãe.</item>
+        <item>Eu amo todos os que me amam, e quem me busca me encontra!</item>
+        <item>Porquanto, toda pessoa que me encontra, acha a vida e ganha o favor do SENHOR.</item>
+        <item>O ódio provoca contendas, mas o amor cobre todas as transgressões.</item>
+        <item>A bênção do SENHOR produz riqueza e não provoca sofrimento algum.</item>
+        <item>A integridade dos justos os guia, mas a falsidade dos infiéis os aniquila.</item>
+        <item>Quem faz o bem aos outros, a si mesmo o faz; a pessoa cruel provoca sua própria ruína.</item>
+        <item>O generoso sempre prosperará; quem oferece ajuda ao necessitado, conforto receberá.</item>
+        <item>O tolo revela de imediato seu aborrecimento, mas a pessoa prudente ignora o insulto!</item>
+        <item>O homem honesto é um bom guia para seus amigos, mas as trilhas dos ímpios os induzem ao erro.</item>
+        <item>No Caminho da justiça está a Vida; esse é o Caminho que nos livra da morte.</item>
+        <item>Alguns assumem falsamente o papel de ricos e prestigiosos, mas nada têm de fato; outros passam a ideia de que são pobres, mas possuem grandes riquezas!</item>
+        <item>Cada coração conhece bem suas próprias mágoas, e da sua alegria não participará o estranho.</item>
+        <item>Mesmo no riso a alma pode sofrer, e a euforia pode acabar em tristeza.</item>
+        <item>O incauto acredita em toda informação que recebe, mas o homem prudente observa bem onde pisa.</item>
+        <item>A paz de espírito é saúde para o corpo, mas a inveja corrói como o câncer.</item>
+        <item>Oprimir o povo é ultrajar o seu Criador, mas tratar com bondade o pobre é honrar a Deus.</item>
+        <item>As palavras bondosas revigoram a nossa vida, entretanto o falar perverso desanima o espírito.</item>
+        <item>É melhor possuir poucos bens com o temor do SENHOR do que ser rico e viver infeliz.</item>
+        <item>Quem acolhe bem a repreensão construtiva terá sempre lugar entre os sábios!</item>
+        <item>A sabedoria ministra o temor do SENHOR, e a humildade antecede a honra.</item>
+        <item>O cabelo grisalho é uma coroa de experiência e esplendor, que deve ser conquistada mediante uma vida justa.</item>
+    </string-array>
 </resources>

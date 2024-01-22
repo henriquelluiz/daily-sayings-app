@@ -2,11 +2,11 @@ package me.henriquelluiz.dailysayings.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
-import me.henriquelluiz.dailysayings.R
+import androidx.compose.ui.unit.dp
 
 val Shapes = Shapes(
-    small = RoundedCornerShape(R.dimen.small),
-    medium = RoundedCornerShape(R.dimen.medium),
-    large = RoundedCornerShape(R.dimen.large),
-    extraLarge = RoundedCornerShape(R.dimen.extraLarge)
+    small = RoundedCornerShape(4.dp),
+    medium = RoundedCornerShape(8.dp),
+    large = RoundedCornerShape(16.dp),
+    extraLarge = RoundedCornerShape(24.dp)
 )
