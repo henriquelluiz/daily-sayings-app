@@ -1,5 +1,14 @@
 package me.henriquelluiz.dailysayings
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,24 +44,47 @@ import androidx.compose.ui.unit.dp
 import me.henriquelluiz.dailysayings.model.Saying
 import me.henriquelluiz.dailysayings.ui.theme.DailySayingsTheme
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun SayingList(
     sayings: Array<String>,
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues = PaddingValues(0.dp)
 ) {
-    LazyColumn(modifier = modifier, contentPadding = paddingValues) {
-        itemsIndexed(sayings) { index, item ->
-            val saying = Saying(index + 1, item)
-            SayingCard(
-                saying = saying,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        horizontal = dimensionResource(R.dimen.large),
-                        vertical = dimensionResource(R.dimen.medium)
-                    )
-            )
+    val visibleState = remember {
+        MutableTransitionState(false).apply { targetState = true }
+    }
+
+    AnimatedVisibility(
+        visibleState = visibleState,
+        enter = fadeIn(
+            animationSpec = spring(Spring.DampingRatioLowBouncy)
+        ),
+        exit = fadeOut(),
+        modifier = modifier
+    ) {
+        LazyColumn(contentPadding = paddingValues) {
+            itemsIndexed(sayings) { index, item ->
+                val saying = Saying(index + 1, item)
+                SayingCard(
+                    saying = saying,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = dimensionResource(R.dimen.large),
+                            vertical = dimensionResource(R.dimen.medium)
+                        )
+                        .animateEnterExit(
+                            expandVertically(
+                                animationSpec = spring(
+                                    stiffness = Spring.StiffnessLow,
+                                    dampingRatio = Spring.DampingRatioMediumBouncy
+                                ),
+                                initialHeight = { it * (index) }
+                            )
+                        )
+                )
+            }
         }
     }
 }
@@ -64,6 +96,11 @@ fun SayingCard(
 ) {
     Card(modifier = modifier) {
         var isMarked by remember { mutableStateOf(false) }
+        val chipContainerColor by animateColorAsState(
+            targetValue = if (isMarked) MaterialTheme.colorScheme.tertiaryContainer
+            else MaterialTheme.colorScheme.secondaryContainer,
+            label = "chipContainerColor"
+        )
 
         Column(modifier = Modifier.padding(dimensionResource(R.dimen.medium))) {
             AssistChip(
@@ -72,7 +109,7 @@ fun SayingCard(
                     Text(
                         text = stringResource(R.string.day_of_month, saying.dayOfMonth),
                         style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.secondary
+                        color = MaterialTheme.colorScheme.onBackground
                     )
                 },
                 leadingIcon = {
@@ -80,21 +117,21 @@ fun SayingCard(
                         Icon(
                             painter = painterResource(R.drawable.baseline_check_circle_outline_24),
                             contentDescription = "Day Of Month",
-                            tint = MaterialTheme.colorScheme.secondary,
+                            tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.size(AssistChipDefaults.IconSize)
                         )
                     } else {
                         Icon(
                             painter = painterResource(R.drawable.baseline_radio_button_unchecked_24),
                             contentDescription = "Day Of Month",
-                            tint = MaterialTheme.colorScheme.secondary,
+                            tint = MaterialTheme.colorScheme.onBackground,
                             modifier = Modifier.size(AssistChipDefaults.IconSize)
                         )
                     }
 
                 },
                 colors = AssistChipDefaults.assistChipColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer
+                    containerColor = chipContainerColor
                 ),
                 modifier = Modifier
                     .sizeIn(maxHeight = 26.dp, maxWidth = 90.dp)
