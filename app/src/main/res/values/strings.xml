@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Daily Sayings</string>
-    <string name="day_of_month">Day %d</string>
+    <string name="day_of_month">%dº Dia</string>
     <string-array name="list_of_sayings_pt">
         <item>O temor do SENHOR é o princípio do conhecimento, mas os insensatos desprezam.</item>
         <item>Porquanto é o SENHOR quem concede sabedoria, e da sua boca procedem a inteligência e o discernimento.</item>

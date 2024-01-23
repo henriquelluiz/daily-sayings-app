@@ -27,12 +27,16 @@ val Typography = Typography(
         fontFamily = JosefinSans,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
-        lineHeight = 24.sp,
+        lineHeight = 18.sp,
         letterSpacing = 0.5.sp
     ),
     labelSmall = TextStyle(
         fontFamily = JosefinSans,
         fontWeight = FontWeight.Light,
         fontSize = 11.sp
+    ),
+    labelMedium = TextStyle(
+        fontFamily = JosefinSans,
+        fontWeight = FontWeight.Normal
     )
 )
