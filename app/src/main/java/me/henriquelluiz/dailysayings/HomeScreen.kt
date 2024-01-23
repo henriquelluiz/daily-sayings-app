@@ -1,7 +1,10 @@
 package me.henriquelluiz.dailysayings
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,6 +17,7 @@ import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,9 +38,10 @@ import me.henriquelluiz.dailysayings.ui.theme.DailySayingsTheme
 @Composable
 fun SayingList(
     sayings: Array<String>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues = PaddingValues(0.dp)
 ) {
-    LazyColumn(modifier = modifier) {
+    LazyColumn(modifier = modifier, contentPadding = paddingValues) {
         itemsIndexed(sayings) { index, item ->
             val saying = Saying(index + 1, item)
             SayingCard(
@@ -66,7 +71,8 @@ fun SayingCard(
                 label = {
                     Text(
                         text = stringResource(R.string.day_of_month, saying.dayOfMonth),
-                        style = MaterialTheme.typography.labelMedium
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.secondary
                     )
                 },
                 leadingIcon = {
@@ -74,24 +80,24 @@ fun SayingCard(
                         Icon(
                             painter = painterResource(R.drawable.baseline_check_circle_outline_24),
                             contentDescription = "Day Of Month",
-                            tint = MaterialTheme.colorScheme.tertiary,
+                            tint = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.size(AssistChipDefaults.IconSize)
                         )
                     } else {
                         Icon(
                             painter = painterResource(R.drawable.baseline_radio_button_unchecked_24),
                             contentDescription = "Day Of Month",
-                            tint = MaterialTheme.colorScheme.tertiary,
+                            tint = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.size(AssistChipDefaults.IconSize)
                         )
                     }
 
                 },
                 colors = AssistChipDefaults.assistChipColors(
-                    containerColor = MaterialTheme.colorScheme.tertiaryContainer
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer
                 ),
                 modifier = Modifier
-                    .sizeIn(maxHeight = 26.dp, maxWidth = 86.dp)
+                    .sizeIn(maxHeight = 26.dp, maxWidth = 90.dp)
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.medium)))
             Text(
@@ -110,7 +116,13 @@ fun SayingCard(
 @Composable
 fun HomeScreenPreview() {
     val sayings = stringArrayResource(R.array.list_of_sayings_pt)
-    DailySayingsTheme {
-        SayingList(sayings = sayings)
+    DailySayingsTheme(darkTheme = false) {
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            SayingList(sayings = sayings)
+        }
     }
 }
